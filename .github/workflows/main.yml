@@ -18,6 +18,9 @@ jobs:
       - name: Install Maven
         run: mvn -version
 
+      - name: Set JAVA_HOME explicitly
+        run: export JAVA_HOME=/usr/lib/jvm/java-21-temurin
+
   code-quality:
     needs: dependencies
     runs-on: ubuntu-latest
