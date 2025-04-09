@@ -24,6 +24,12 @@ jobs:
       - name: Install Maven
         run: mvn -version
 
+      - name: Check Java version in GitHub Actions
+        run: |
+          echo "JAVA_HOME is: $JAVA_HOME"
+          java -version
+          javac -version
+
   code-quality:
     needs: dependencies
     runs-on: ubuntu-latest
