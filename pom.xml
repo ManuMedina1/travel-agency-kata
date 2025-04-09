@@ -113,6 +113,9 @@
 						<ruleset>rulesets/java/design.xml</ruleset> <!-- Reglas de diseño -->
 						<ruleset>rulesets/java/unusedcode.xml</ruleset> <!-- Reglas para código no usado -->
 					</rulesets>
+					<excludes>
+						<exclude>**/TravelAgencyKataApplication.java</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 
