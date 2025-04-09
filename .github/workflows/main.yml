@@ -49,6 +49,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Build the Java project with Maven
+        run: mvn clean package
         
       - name: Creating Docker file
         run: docker build . -t manuelmedinap1/tareacicd:latest
