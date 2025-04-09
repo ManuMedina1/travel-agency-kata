@@ -92,6 +92,63 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			
+			<!-- Usaremos PMD como linter y checker a la vez -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.15.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+							<goal>pmd</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<rulesets>
+						<ruleset>rulesets/java/basic.xml</ruleset> <!-- Reglas básicas de PMD -->
+						<ruleset>rulesets/java/design.xml</ruleset> <!-- Reglas de diseño -->
+						<ruleset>rulesets/java/unusedcode.xml</ruleset> <!-- Reglas para código no usado -->
+					</rulesets>
+				</configuration>
+			</plugin>
+
+			<!-- EJecitar con "mvn pmd:check" para checkeo, no corrije automaticamente, solo informa :,( -->
+
+			<!-- Usaremos SpotLess como formater -->
+
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>2.44.0</version>
+				<executions>
+					<execution>
+						<id>spotless-check</id>
+						<phase>validate</phase> <!-- Fase en la que se verifica el formato -->
+						<goals>
+							<goal>check</goal> <!-- Verificar formato -->
+						</goals>
+					</execution>
+					<execution>
+						<id>spotless-apply</id>
+						<phase>compile</phase> <!-- Fase en la que se aplican los cambios -->
+						<goals>
+							<goal>apply</goal> <!-- Aplicar formato -->
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<java>
+						<googleJavaFormat/>
+					</java>
+				</configuration>
+			</plugin>
+
+			<!-- EJecitar con "mvn spotless:check" para checkeo, para autocorreccion, "mvn spotless:apply" -->
+
 		</plugins>
 	</build>
 
